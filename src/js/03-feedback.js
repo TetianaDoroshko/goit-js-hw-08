@@ -27,7 +27,7 @@ const storage = {
   },
 };
 
-const dataObj = storage.getItem(KEY) ?? {};
+let dataObj = storage.getItem(KEY) ?? {};
 
 refs.inpEmail.value = dataObj.email ?? '';
 refs.inpMessage.value = dataObj.message ?? '';
@@ -44,6 +44,7 @@ refs.form.addEventListener('submit', onFormSubmit);
 function onFormSubmit(event) {
   event.preventDefault();
   console.log(dataObj);
+  dataObj = {};
   event.currentTarget.reset();
   storage.removeItem(KEY);
 }
